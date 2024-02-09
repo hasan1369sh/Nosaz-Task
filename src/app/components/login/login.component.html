@@ -1,0 +1,41 @@
+<div *ngIf="!isLoggedIn" class="container login">
+  <div class="container-login">
+    <div class="login-box">
+      <form class="login-form">
+        <div>
+          <label class="label">نام کاربری :</label>
+          <br />
+          <input
+            #usernameInput
+            class="input"
+            type="text"
+            placeholder="نام کاربری را وارد کنید"
+          />
+        </div>
+        <div>
+          <label class="label">رمز عبور :</label>
+          <br />
+          <input
+            #passwordInput
+            class="input"
+            type="password"
+            placeholder="رمز عبور را وارد کنید"
+          />
+        </div>
+        <div>
+          <input type="checkbox" />
+          <label class="label">مرا بخاطر بسپار</label>
+        </div>
+        <button
+          (click)="logIn($event, usernameInput.value, passwordInput.value)"
+          class="btn btn-login"
+        >
+          ورود به سامانه
+        </button>
+        <div class="separator"></div>
+        <a class="forgot-password" href="#">رمز عبور خود را فراموش کرده اید؟</a>
+      </form>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>

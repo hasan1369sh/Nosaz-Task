@@ -1,0 +1,75 @@
+<table style="width: 100%">
+  <tr *ngIf="!editBox">
+    <th *ngFor="let item of tableHeaderItems">{{ item }}</th>
+  </tr>
+  <ng-container *ngFor="let user of users">
+    <ng-container *ngIf="user.role != 'admin'">
+      <tr *ngIf="obj">
+        <td>{{ user.name }}</td>
+        <td>{{ user.family }}</td>
+        <td>{{ user.codeMeli }}</td>
+        <td>{{ user.birthDay }}</td>
+        <td>{{ user.city }}</td>
+        <td>
+          <button class="viewGrades" (click)="showGrades(user.id, user.name)">
+            مشاهده
+          </button>
+        </td>
+      </tr>
+    </ng-container>
+  </ng-container>
+  <ng-container *ngIf="!editBox">
+    <tr *ngIf="arr">
+      <td *ngFor="let user of users">{{ user }}</td>
+      <td>
+        <a (click)="editGrade()" class="editInformation">ویرایش</a>
+      </td>
+    </tr>
+  </ng-container>
+  <button *ngIf="obj" class="close" (click)="sendBooleanToAdmin()">❌</button>
+</table>
+<ng-container *ngIf="editBox">
+  <form style="text-align: center; padding-bottom: 1rem">
+    <div class="add-grade-container">
+      <div class="add-grade-item">
+        <label>ریاضیات عمومی</label>
+        <input #generalMathematicsInput type="text" value="{{ users[0] }}" />
+      </div>
+      <div class="add-grade-item">
+        <label> فیزیک</label>
+        <input #physicsInput type="text" value="{{ users[1] }}" />
+      </div>
+      <div class="add-grade-item">
+        <label>جریان</label>
+        <input #circuitInput type="text" value="{{ users[2] }}" />
+      </div>
+      <div class="add-grade-item">
+        <label>مکاترونیک</label>
+        <input #mechatronicsInput type="text" value="{{ users[3] }}" />
+      </div>
+      <div class="add-grade-item">
+        <label>فارسی</label>
+        <input #farsiInput type="text" value="{{ users[4] }}" />
+      </div>
+      <div class="add-grade-item">
+        <label>عربی</label>
+        <input #arabicInput type="text" value="{{ users[5] }}" />
+      </div>
+    </div>
+    <a
+      class="btn save-grade"
+      (click)="
+        saveNewGrade(
+          +generalMathematicsInput.value,
+          +physicsInput.value,
+          +circuitInput.value,
+          +mechatronicsInput.value,
+          +farsiInput.value,
+          +arabicInput.value
+        )
+      "
+    >
+      ثبت تغییرات
+    </a>
+  </form>
+</ng-container>

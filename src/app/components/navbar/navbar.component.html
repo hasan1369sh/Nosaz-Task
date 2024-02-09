@@ -1,0 +1,51 @@
+<nav class="navbar">
+  <ul class="navbar-items">
+    <li class="navbar-item">
+      <a
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/']"
+        class="navbar-link"
+        >صفحه اصلی</a
+      >
+    </li>
+    <li class="navbar-item">
+      <a
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/about']"
+        class="navbar-link"
+        >درباره ما</a
+      >
+    </li>
+    <li class="navbar-item">
+      <a
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/contact']"
+        class="navbar-link"
+        >تماس با ما</a
+      >
+    </li>
+    <li *ngIf="!isLogin" class="navbar-item">
+      <a
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/login']"
+        class="navbar-link"
+        >ورود</a
+      >
+    </li>
+    <li *ngIf="isLogin" class="navbar-item">
+      <a
+        (click)="logOutHandler()"
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/login']"
+        class="navbar-link"
+        >خروج</a
+      >
+    </li>
+  </ul>
+</nav>
+<router-outlet></router-outlet>

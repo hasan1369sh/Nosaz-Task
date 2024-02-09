@@ -1,0 +1,65 @@
+<div *ngIf="!addModal" class="table">
+  <div class="header">
+    <div style="position: relative">
+      <input
+        #textInput
+        type="text"
+        placeholder="عبارت مورد نظر را وارد کنید"
+        ((mouseleave))="onMouseLeave(textInput.value)"
+      />
+      <span (click)="onSearch(textInput.value)" class="search">🔍</span>
+    </div>
+    <button (click)="addUser($event)" class="btn add-btn">افزودن دانشجو</button>
+  </div>
+  <div
+    *ngIf="searchItems.length === 0"
+    style="
+      width: 95%;
+      margin: 0 auto 1rem;
+      height: 3px;
+      border-radius: 10px;
+      background-color: white;
+    "
+  ></div>
+  <app-table
+    *ngIf="searchItems.length === 0"
+    [grades]="grades"
+    [users]="users"
+    [tableHeaderItems]="tableHeaderItems"
+    [obj]="obj"
+    [arr]="arr"
+  ></app-table>
+</div>
+<div *ngIf="addModal" class="modal">
+  <app-add-modal
+    (closeClicked)="onClosedModal($event)"
+    (newUsers)="newListOfUsers($event, true)"
+  ></app-add-modal>
+</div>
+<div *ngIf="searchItems.length !== 0" class="search-box">
+  <form class="modal-form">
+    <ul *ngFor="let user of searchItems">
+      <div class="search-item-container">
+        <label>نام : </label>
+        <li>{{ user.name }}</li>
+      </div>
+      <div class="search-item-container">
+        <label>نام خانوادگی : </label>
+        <li>{{ user.family }}</li>
+      </div>
+      <div class="search-item-container">
+        <label>کد ملی : </label>
+        <li>{{ user.codeMeli }}</li>
+      </div>
+      <div class="search-item-container">
+        <label>شهر : </label>
+        <li>{{ user.city }}</li>
+      </div>
+      <div class="search-item-container">
+        <label>تاریخ تولد : </label>
+        <li>{{ user.birthDay }}</li>
+      </div>
+    </ul>
+    <button class="close">❌</button>
+  </form>
+</div>

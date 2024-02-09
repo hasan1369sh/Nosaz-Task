@@ -1,0 +1,9 @@
+.not-found {
+  width: 90%;
+  height: 90vh;
+  margin: 0 auto;
+  background-image: url("../../../assets/404-error-subfolder.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}

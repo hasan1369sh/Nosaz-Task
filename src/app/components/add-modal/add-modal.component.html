@@ -1,0 +1,68 @@
+<div class="modal">
+  <form class="modal-form">
+    <div>
+      <label>نام :</label><br />
+      <input #nameInput type="text" (change)="persianHandler1(nameInput)" />
+      <span class="type-error" *ngIf="isTypeError1"
+        >نام باید شامل حروف فارسی یا فاصله باشد</span
+      >
+    </div>
+    <div>
+      <label>نام خانوادگی :</label><br />
+      <input #familyInput type="text" (change)="persianHandler2(familyInput)" />
+      <span class="type-error" *ngIf="isTypeError2"
+        >نام خانوادگی باید شامل حروف فارسی یا فاصله باشد</span
+      >
+    </div>
+    <div>
+      <label>تاریخ تولد :</label><br />
+      <ng-persian-datepicker>
+        <input #birthdayInput type="text" [formControl]="dataValue" />
+      </ng-persian-datepicker>
+    </div>
+    <div>
+      <label>آدرس :</label><br />
+      <input #cityInput type="text" />
+    </div>
+    <div>
+      <label>کد ملی :</label><br />
+      <input
+        #codeMeliInput
+        type="text"
+        (change)="isValidIranianNationalCode(codeMeliInput)"
+      />
+      <span class="type-error" *ngIf="!isValid"
+        >کد ملی وارد شده معتبر نمی باشد !!!</span
+      >
+    </div>
+    <div>
+      <label>نام کاربری :</label><br />
+      <input #usernameInput type="text" />
+    </div>
+    <div>
+      <label>رمز عبور :</label><br />
+      <input #passwordInput type="text" />
+    </div>
+    <div style="text-align: center">
+      <button
+        (click)="
+          saveChange(
+            $event,
+            nameInput.value,
+            familyInput.value,
+            birthdayInput.value,
+            cityInput.value,
+            +codeMeliInput.value,
+            usernameInput.value,
+            passwordInput.value
+          )
+        "
+        class="btn saveModal-btn"
+        type="submit"
+      >
+        ثبت نام دانشجو
+      </button>
+      <button class="close" (click)="closeModal($event)">❌</button>
+    </div>
+  </form>
+</div>

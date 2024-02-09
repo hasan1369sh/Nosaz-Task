@@ -1,0 +1,60 @@
+.container-login {
+  width: 70%;
+  margin: 2rem auto;
+  background: linear-gradient(to right, #26928d, 30%, #515c63);
+  padding: 5rem 0;
+  border-radius: 0.5rem;
+}
+.login-box {
+  width: 60%;
+  margin: 0 auto;
+  height: 30rem;
+  padding: 2rem;
+  background-color: rgb(207, 240, 241);
+  border-radius: 0.5rem;
+}
+.login-form {
+  width: 90%;
+  margin: 0 auto;
+  padding: 3rem;
+}
+.label {
+  font-size: 1.1rem;
+  color: #515c63;
+  &:last-child {
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding-right: 0.3rem;
+  }
+}
+.input {
+  width: 100%;
+  margin: 0.5rem 0 1rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: 8px;
+  border: none;
+  outline: none;
+  background-color: #515c63;
+  color: white;
+  font-size: 0.9rem;
+  &::placeholder {
+    color: white;
+  }
+}
+.btn-login {
+  margin: 2rem 0;
+  width: 100%;
+}
+.separator {
+  height: 2px;
+  background-color: white;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+.forgot-password {
+  cursor: pointer;
+  color: rgb(79, 163, 214);
+  font-weight: bolder;
+  padding-right: 5px;
+}

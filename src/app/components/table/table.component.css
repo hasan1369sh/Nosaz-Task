@@ -1,0 +1,28 @@
+th,
+td {
+  padding: 10px;
+}
+th {
+  color: #515c63;
+  font-size: 1.2rem;
+  background-color: white;
+}
+th:last-child,
+td:last-child {
+  border-left: none;
+}
+td {
+  background-color: #515c63;
+  color: white;
+  text-align: center;
+}
+.editInformation,
+.viewGrades {
+  all: unset;
+  cursor: pointer;
+  color: lightblue;
+  font-weight: 600;
+  &:hover {
+    color: white;
+  }
+}

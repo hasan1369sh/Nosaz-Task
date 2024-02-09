@@ -1,0 +1,67 @@
+{
+  "hash": "28bc72f3",
+  "configHash": "fc20baad",
+  "lockfileHash": "1db1b500",
+  "browserHash": "e468f7ca",
+  "optimized": {
+    "@angular/common": {
+      "src": "../../../../../node_modules/@angular/common/fesm2022/common.mjs",
+      "file": "@angular_common.js",
+      "fileHash": "d2f8ce28",
+      "needsInterop": false
+    },
+    "@angular/core": {
+      "src": "../../../../../node_modules/@angular/core/fesm2022/core.mjs",
+      "file": "@angular_core.js",
+      "fileHash": "288640fe",
+      "needsInterop": false
+    },
+    "@angular/forms": {
+      "src": "../../../../../node_modules/@angular/forms/fesm2022/forms.mjs",
+      "file": "@angular_forms.js",
+      "fileHash": "e2701b1b",
+      "needsInterop": false
+    },
+    "@angular/platform-browser": {
+      "src": "../../../../../node_modules/@angular/platform-browser/fesm2022/platform-browser.mjs",
+      "file": "@angular_platform-browser.js",
+      "fileHash": "107a8be8",
+      "needsInterop": false
+    },
+    "@angular/router": {
+      "src": "../../../../../node_modules/@angular/router/fesm2022/router.mjs",
+      "file": "@angular_router.js",
+      "fileHash": "ac508a46",
+      "needsInterop": false
+    },
+    "ng-persian-datepicker": {
+      "src": "../../../../../node_modules/ng-persian-datepicker/fesm2022/ng-persian-datepicker.mjs",
+      "file": "ng-persian-datepicker.js",
+      "fileHash": "859bcb01",
+      "needsInterop": false
+    },
+    "rxjs": {
+      "src": "../../../../../node_modules/rxjs/dist/esm5/index.js",
+      "file": "rxjs.js",
+      "fileHash": "27861379",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-CMAF2SJ2": {
+      "file": "chunk-CMAF2SJ2.js"
+    },
+    "chunk-JDVAZXZU": {
+      "file": "chunk-JDVAZXZU.js"
+    },
+    "chunk-OPAKLLNP": {
+      "file": "chunk-OPAKLLNP.js"
+    },
+    "chunk-BCBXPVHY": {
+      "file": "chunk-BCBXPVHY.js"
+    },
+    "chunk-JZJW2K2Z": {
+      "file": "chunk-JZJW2K2Z.js"
+    }
+  }
+}

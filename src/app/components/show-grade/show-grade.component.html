@@ -1,0 +1,70 @@
+<div class="table">
+  <div class="header">
+    <button (click)="onBack($event)" class="btn back-btn">
+      بازگشت به پنل مدیریت
+    </button>
+  </div>
+  <app-table
+    *ngIf="isGrade"
+    [grades]="grades"
+    [users]="newUsers"
+    [tableHeaderItems]="tableHeaderItems"
+    [isHidden]="isHidden"
+    [obj]="obj"
+    [arr]="arr"
+  ></app-table>
+  <form *ngIf="!isGrade" style="text-align: center">
+    <p
+      style="
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: orangered;
+        padding-top: 2rem;
+      "
+    >
+      هنوز نمره ای برای این دانشجو ثبت نشده است
+    </p>
+    <div class="add-grade-container">
+      <div class="add-grade-item">
+        <label>ریاضیات عمومی</label>
+        <input #generalMathematicsInput type="text" />
+      </div>
+      <div class="add-grade-item">
+        <label> فیزیک</label>
+        <input #physicsInput type="text" />
+      </div>
+      <div class="add-grade-item">
+        <label>جریان</label>
+        <input #circuitInput type="text" />
+      </div>
+      <div class="add-grade-item">
+        <label>مکاترونیک</label>
+        <input #mechatronicsInput type="text" />
+      </div>
+      <div class="add-grade-item">
+        <label>فارسی</label>
+        <input #farsiInput type="text" />
+      </div>
+      <div class="add-grade-item">
+        <label>عربی</label>
+        <input #arabicInput type="text" />
+      </div>
+    </div>
+    <button
+      class="btn save-grade"
+      (click)="
+        saveGrade(
+          $event,
+          +generalMathematicsInput.value,
+          +physicsInput.value,
+          +circuitInput.value,
+          +mechatronicsInput.value,
+          +farsiInput.value,
+          +arabicInput.value
+        )
+      "
+    >
+      ثبت نمرات
+    </button>
+  </form>
+</div>
