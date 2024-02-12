@@ -2,95 +2,3 @@
   <p *ngIf="isAdmin">به پنل مدیریت خوش آمدید 🌺🌺🌺</p>
   <p *ngIf="!isAdmin">به پنل کاربری خود خوش آمدید 🌷🌷🌷</p>
 </div>
-<div class="container">
-  <div>
-    <ul class="user-menu">
-      <li class="dropdown">
-        <a>پروفایل شما</a>
-        <div class="dropdown-content">
-          <ul>
-            <li>
-              <p>نام : {{ user?.name }}</p>
-            </li>
-            <li>
-              <p>نام خانوادگی : {{ user?.family }}</p>
-            </li>
-            <li>
-              <p>تاریخ تولد : {{ user?.birthDay }}</p>
-            </li>
-            <li>
-              <p>آدرس : {{ user?.city }}</p>
-            </li>
-            <li>
-              <p>کد ملی : {{ user?.codeMeli }}</p>
-            </li>
-            <li>
-              <p>نام کاربری : {{ user?.username }}</p>
-            </li>
-            <li>
-              <p>رمز عبور : {{ user?.password }}</p>
-            </li>
-          </ul>
-          <div style="text-align: center">
-            <button (click)="onEdit($event)" class="btn btn-edit">
-              ویرایش اطلاعات
-            </button>
-          </div>
-        </div>
-      </li>
-      <li *ngIf="isAdmin">
-        <a (click)="usersList()">لیست دانشجوها</a>
-      </li>
-      <li *ngIf="!isAdmin">
-        <a (click)="showGrade()">مشاهده نمرات</a>
-      </li>
-    </ul>
-  </div>
-  <div style="text-align: center">
-    <div *ngIf="isGrade === false">
-      <p
-        *ngIf="!isAdmin"
-        style="
-          font-weight: bold;
-          font-size: 1.3rem;
-          color: orangered;
-          padding-top: 2rem;
-        "
-      >
-        هنوز نمره ای برای شما ثبت نشده است
-      </p>
-    </div>
-    <div *ngIf="isGrade" class="add-grade-container">
-      <div class="add-grade-item">
-        <label>ریاضیات عمومی</label>
-        <p>{{ grade.generalMathematics }}</p>
-      </div>
-      <div class="add-grade-item">
-        <label> فیزیک</label>
-        <p>{{ grade.physics }}</p>
-      </div>
-      <div class="add-grade-item">
-        <label>جریان</label>
-        <p>{{ grade.circuit }}</p>
-      </div>
-      <div class="add-grade-item">
-        <label>مکاترونیک</label>
-        <p>{{ grade.mechatronics }}</p>
-      </div>
-      <div class="add-grade-item">
-        <label>فارسی</label>
-        <p>{{ grade.farsi }}</p>
-      </div>
-      <div class="add-grade-item">
-        <label>عربی</label>
-        <p>{{ grade.arabic }}</p>
-      </div>
-    </div>
-  </div>
-</div>
-<div *ngIf="editModal" class="modal">
-  <app-edit-modal (closeClicked)="onClosedModal($event)"></app-edit-modal>
-</div>
-<div *ngIf="usersModal" class="modal">
-  <app-users-list (closeModal)="onClosedUsersModal($event)"></app-users-list>
-</div>

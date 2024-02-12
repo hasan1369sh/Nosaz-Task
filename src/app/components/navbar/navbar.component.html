@@ -27,7 +27,16 @@
         >تماس با ما</a
       >
     </li>
-    <li *ngIf="!isLogin" class="navbar-item">
+    <li *ngIf="isLoggedIn" class="navbar-item">
+      <a
+        [routerLinkActive]="['active']"
+        [routerLinkActiveOptions]="{ exact: true }"
+        [routerLink]="['/login', user.id, user.username]"
+        class="navbar-link"
+        >پنل</a
+      >
+    </li>
+    <li *ngIf="!isLoggedIn" class="navbar-item">
       <a
         [routerLinkActive]="['active']"
         [routerLinkActiveOptions]="{ exact: true }"
@@ -36,7 +45,48 @@
         >ورود</a
       >
     </li>
-    <li *ngIf="isLogin" class="navbar-item">
+    <li *ngIf="isLoggedIn" class="navbar-item dropdown">
+      <a class="navbar-link">پروفایل شما</a>
+      <div class="dropdown-content">
+        <ul>
+          <li>
+            <p>نام : {{ user?.name }}</p>
+          </li>
+          <li>
+            <p>نام خانوادگی : {{ user?.family }}</p>
+          </li>
+          <li>
+            <p>تاریخ تولد : {{ user?.birthDay }}</p>
+          </li>
+          <li>
+            <p>آدرس : {{ user?.city }}</p>
+          </li>
+          <li>
+            <p>کد ملی : {{ user?.codeMeli }}</p>
+          </li>
+          <li>
+            <p>نام کاربری : {{ user?.username }}</p>
+          </li>
+          <li>
+            <p>رمز عبور : {{ user?.password }}</p>
+          </li>
+        </ul>
+        <div style="text-align: center">
+          <button (click)="onEdit($event)" class="btn btn-edit">
+            ویرایش اطلاعات
+          </button>
+        </div>
+      </div>
+    </li>
+    <li *ngIf="isAdmin" class="navbar-item">
+      <a class="navbar-link" (click)="usersList()">لیست دانشجوها</a>
+    </li>
+    <li *ngIf="!isAdmin" class="navbar-item">
+      <a class="navbar-link" *ngIf="isLoggedIn" (click)="gradeHandler()"
+        >مشاهده نمرات</a
+      >
+    </li>
+    <li *ngIf="isLoggedIn" class="navbar-item">
       <a
         (click)="logOutHandler()"
         [routerLinkActive]="['active']"
@@ -48,4 +98,51 @@
     </li>
   </ul>
 </nav>
+<div *ngIf="isLoggedIn" style="text-align: center">
+  <div *ngIf="isGrade === false">
+    <p
+      *ngIf="!isAdmin"
+      style="
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: orangered;
+        padding-top: 2rem;
+      "
+    >
+      هنوز نمره ای برای شما ثبت نشده است
+    </p>
+  </div>
+  <div *ngIf="isGrade" class="add-grade-container">
+    <div class="add-grade-item">
+      <label>ریاضیات عمومی</label>
+      <p>{{ grade.generalMathematics }}</p>
+    </div>
+    <div class="add-grade-item">
+      <label> فیزیک</label>
+      <p>{{ grade.physics }}</p>
+    </div>
+    <div class="add-grade-item">
+      <label>جریان</label>
+      <p>{{ grade.circuit }}</p>
+    </div>
+    <div class="add-grade-item">
+      <label>مکاترونیک</label>
+      <p>{{ grade.mechatronics }}</p>
+    </div>
+    <div class="add-grade-item">
+      <label>فارسی</label>
+      <p>{{ grade.farsi }}</p>
+    </div>
+    <div class="add-grade-item">
+      <label>عربی</label>
+      <p>{{ grade.arabic }}</p>
+    </div>
+  </div>
+</div>
+<div *ngIf="editModal" class="modal">
+  <app-edit-modal
+    [user]="user"
+    (closeClicked)="onClosedModal($event)"
+  ></app-edit-modal>
+</div>
 <router-outlet></router-outlet>

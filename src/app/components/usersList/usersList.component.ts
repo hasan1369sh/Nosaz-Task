@@ -17,6 +17,7 @@ import { SharedUsersService } from '../../services/sharedUsers.service';
 })
 export class UsersListComponent implements OnInit {
   users: IUser[] = this.usersService.users;
+  addModal!: boolean;
   constructor(
     private usersService: UsersService,
     private headerTable: AdminTableService,
@@ -35,7 +36,6 @@ export class UsersListComponent implements OnInit {
   obj: boolean = true;
   arr: boolean = false;
   isModal: boolean = false;
-  addModal: boolean = false;
   grades = this.gradeService.grades;
   grade!: IGrade;
   isGrade: boolean = true;
@@ -80,16 +80,5 @@ export class UsersListComponent implements OnInit {
   public onMouseLeave(value: string) {
     if (value === '') this.searchItems = [];
   }
-  ngOnInit(): void {
-    // this.users.forEach((user) => {
-    //   let isGradeForUser = this.grades.find(
-    //     (grade) => grade.fkStudentId === user.id
-    //   );
-    //   if (isGradeForUser) {
-    //     this.addGrade = false;
-    //   } else {
-    //     this.addGrade = true;
-    //   }
-    // });
-  }
+  ngOnInit(): void {}
 }

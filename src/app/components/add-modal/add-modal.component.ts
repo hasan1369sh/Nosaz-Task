@@ -1,7 +1,6 @@
 import { Component, OnInit, Output } from '@angular/core';
 import { IUser, UsersService } from '../../services/users.service';
 import { PersianTypeService } from '../../services/persian-type.service';
-import { ActivatedRoute } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { EventEmitter } from '@angular/core';
 import { SharedUsersService } from '../../services/sharedUsers.service';
@@ -19,7 +18,6 @@ export class AddModalComponent implements OnInit {
   dataValue = new FormControl();
   constructor(
     private persianType: PersianTypeService,
-    private route: ActivatedRoute,
     private usersService: UsersService,
     private newUsers: SharedUsersService
   ) {}

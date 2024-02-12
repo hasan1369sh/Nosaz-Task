@@ -5,7 +5,7 @@
         #textInput
         type="text"
         placeholder="عبارت مورد نظر را وارد کنید"
-        ((mouseleave))="onMouseLeave(textInput.value)"
+        (mouseleave)="onMouseLeave(textInput.value)"
       />
       <span (click)="onSearch(textInput.value)" class="search">🔍</span>
     </div>
@@ -60,6 +60,5 @@
         <li>{{ user.birthDay }}</li>
       </div>
     </ul>
-    <button class="close">❌</button>
   </form>
 </div>

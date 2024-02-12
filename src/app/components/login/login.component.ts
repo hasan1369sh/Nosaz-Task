@@ -1,8 +1,11 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IUser, UsersService } from '../../services/users.service';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { UserComponent } from '../user/user.component';
 import { CommonModule } from '@angular/common';
+import { UserLoggedInService } from '../../services/user-logged-in.service';
+import { SharedService2 } from '../../services/shared2.service';
+import { SharedService } from '../../services/shared.service';
 
 @Component({
   selector: 'app-login',
@@ -12,18 +15,26 @@ import { CommonModule } from '@angular/common';
   imports: [RouterOutlet, UserComponent, CommonModule],
 })
 export class LoginComponent implements OnInit {
+  isLoggedIn: boolean = false;
   constructor(
     private usersService: UsersService,
     private router: Router,
-    private route: ActivatedRoute
-  ) {}
-
-  isLoggedIn: boolean = false;
-  users: IUser[] = this.usersService.users;
-  public ngOnInit(): void {
-    this.route.queryParams.subscribe((params) => {
-      this.isLoggedIn = params['isLogin'];
+    private userLoggedIn: UserLoggedInService,
+    private isLogin: SharedService2,
+    private sharedService: SharedService
+  ) {
+    // this.isLogin.booleanData2$.subscribe((data) => {
+    //   this.isLoggedIn = data;
+    // });
+    this.sharedService.booleanData$.subscribe((data) => {
+      this.isLoggedIn = data;
     });
+  }
+
+  users: IUser[] = this.usersService.users;
+  user!: IUser;
+  public ngOnInit(): void {
+    console.log(this.isLoggedIn);
   }
 
   public logIn(e: Event, username: string, password: string) {
@@ -31,13 +42,22 @@ export class LoginComponent implements OnInit {
       (user) => user.username === username && user.password === password
     );
     if (u) {
+      this.user = u;
       this.isLoggedIn = true;
-      this.router.navigate(['/login', u.id, u.username], {
-        queryParams: { isLogin: true },
-      });
+      this.sendLoggedInUser();
+      this.sendBooleanData2();
+      this.router.navigate(['/login', this.user.id, this.user.username]);
     } else {
       this.router.navigate(['/not-found']);
     }
     e.preventDefault();
+  }
+  sendLoggedInUser() {
+    const data = this.user;
+    this.userLoggedIn.sendLoggedInUsers(data);
+  }
+  sendBooleanData2() {
+    const data = true;
+    this.isLogin.sendBooleanData2(data);
   }
 }

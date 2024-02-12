@@ -1,4 +1,4 @@
-import { Component, OnInit, Output } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { IUser, UsersService } from '../../services/users.service';
 import { PersianTypeService } from '../../services/persian-type.service';
 import { ActivatedRoute } from '@angular/router';
@@ -15,14 +15,10 @@ import { ReactiveFormsModule } from '@angular/forms';
   styleUrl: './edit-modal.component.css',
 })
 export class EditModalComponent implements OnInit {
-  constructor(
-    private persianType: PersianTypeService,
-    private route: ActivatedRoute,
-    private usersService: UsersService
-  ) {}
+  constructor(private persianType: PersianTypeService) {}
   isTypeError1: boolean = false;
   isTypeError2: boolean = false;
-  user: IUser | undefined;
+  @Input() user!: IUser;
   editModal: boolean = false;
   @Output() closeClicked = new EventEmitter<boolean>();
   allowedChars = this.persianType.allowed_chars;
@@ -75,10 +71,5 @@ export class EditModalComponent implements OnInit {
     e.preventDefault();
     this.closeClicked.emit(this.editModal);
   }
-  ngOnInit(): void {
-    let username = this.route.snapshot.params['username'];
-    this.user = this.usersService.users.find(
-      (user) => user.username === username
-    );
-  }
+  ngOnInit(): void {}
 }
